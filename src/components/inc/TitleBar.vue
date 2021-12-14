@@ -1,0 +1,71 @@
+<template>
+  <div class="title-bar">
+    <b-jumbotron class="jumbotron">
+      <template #header>Vue Library Management System</template>
+      <template #lead>
+        Vue.js / Vuex / Vue-router 활용 개발
+      </template>
+      <hr class="my-4" />
+      <p class="content">
+        Node.js / Express / MySQL 활용 개발 내용을 확인하시려면
+        아래의 링크를 클릭하세요.
+      </p>
+
+      <b-button variant="primary" :href="expressLink" target="_blank">
+        Express 개발 확인 바로가기
+      </b-button>
+    </b-jumbotron>
+  </div>
+</template>
+
+<script>
+const { VUE_APP_EXPRESS } = process.env;
+// import { EXPRESS } from "@/modules/common";
+
+export default {
+  name: "TitleBar",
+  data() {
+    return {
+      expressLink: VUE_APP_EXPRESS,
+    };
+  },
+};
+</script>
+
+<style lang="scss" scoped>
+.title-bar {
+  background-color: $grey-color;
+  color: $light-color;
+  padding: 2em 0;
+  .jumbotron {
+    width: 90%;
+    margin: auto;
+    .display-3 {
+      font-size: 2.5rem;
+      margin-bottom: 0.325em;
+      @include MD {
+        font-size: 2rem;
+      }
+      @include SM {
+        font-size: 1.5rem;
+      }
+    }
+    p {
+      line-height: 1.25;
+      &.lead {
+        @include MD {
+          font-size: 1.125rem;
+        }
+        @include SM {
+          font-size: 0.95rem;
+        }
+      }
+      &.content {
+        @include MD {
+          display: none;
+        }
+      }
+    }
+  }
+}
+</style>
